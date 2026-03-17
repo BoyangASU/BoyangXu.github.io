@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -8,16 +8,60 @@
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    :root {
+    /* ===== LIGHT THEME ===== */
+    :root, [data-theme="light"] {
       --bg: #ffffff;
+      --bg-nav: rgba(255,255,255,0.92);
       --surface: #f5f5f5;
       --border: #e0e0e0;
       --text: #212121;
+      --text-secondary: #424242;
       --muted: #757575;
       --accent: #1a73e8;
       --accent-dim: rgba(26, 115, 232, 0.08);
+      --accent-border: rgba(26,115,232,0.25);
+      --accent-hover-bg: #1558c0;
       --link: #1565c0;
       --link-hover: #0d47a1;
+      --award-color: #e8b84b;
+      --award-bg: rgba(232,184,75,0.1);
+      --award-border: rgba(232,184,75,0.3);
+      --status-bg: rgba(117,117,117,0.08);
+      --status-border: rgba(117,117,117,0.2);
+      --pub-hover-border: rgba(26,115,232,0.4);
+      --photo-border: #e0e0e0;
+      --name-first: #212121;
+      --name-last: #212121;
+      --icon-color: #424242;
+      --icon-hover: #1a73e8;
+    }
+
+    /* ===== DARK THEME (charcoal + teal) ===== */
+    [data-theme="dark"] {
+      --bg: #2b2b2b;
+      --bg-nav: rgba(43,43,43,0.95);
+      --surface: #333333;
+      --border: #444444;
+      --text: #e0e0e0;
+      --text-secondary: #b8b8b8;
+      --muted: #999999;
+      --accent: #5ec5c8;
+      --accent-dim: rgba(94, 197, 200, 0.08);
+      --accent-border: rgba(94, 197, 200, 0.25);
+      --accent-hover-bg: #4ab0b3;
+      --link: #5ec5c8;
+      --link-hover: #7dd5d8;
+      --award-color: #ffd54f;
+      --award-bg: rgba(255,213,79,0.1);
+      --award-border: rgba(255,213,79,0.3);
+      --status-bg: rgba(153,153,153,0.1);
+      --status-border: rgba(153,153,153,0.25);
+      --pub-hover-border: rgba(94,197,200,0.5);
+      --photo-border: #555555;
+      --name-first: #e0e0e0;
+      --name-last: #e0e0e0;
+      --icon-color: #999999;
+      --icon-hover: #5ec5c8;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,13 +74,15 @@
       font-size: 16px;
       line-height: 1.7;
       min-height: 100vh;
+      transition: background 0.35s ease, color 0.35s ease;
     }
 
+    /* NAV */
     nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.92);
+      background: var(--bg-nav);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       display: flex;
@@ -44,6 +90,7 @@
       align-items: center;
       padding: 0 2.5rem;
       height: 56px;
+      transition: background 0.35s ease, border-color 0.35s ease;
     }
 
     .nav-brand {
@@ -53,6 +100,7 @@
       text-decoration: none;
     }
 
+    .nav-right { display: flex; align-items: center; gap: 2rem; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
       color: var(--muted);
@@ -62,6 +110,32 @@
       transition: color 0.2s;
     }
     .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+    /* THEME TOGGLE */
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      transform: rotate(15deg);
+    }
+    .theme-toggle .icon-sun,
+    .theme-toggle .icon-moon { pointer-events: none; line-height: 1; }
+    [data-theme="light"] .theme-toggle .icon-sun { display: none; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: block; }
+    [data-theme="dark"] .theme-toggle .icon-sun  { display: block; }
+    [data-theme="dark"] .theme-toggle .icon-moon  { display: none; }
 
     main {
       max-width: 860px;
@@ -90,12 +164,15 @@
       font-weight: 400;
       line-height: 1.15;
       margin-bottom: 1.5rem;
-      color: var(--text);
+      color: var(--name-last);
     }
-    .hero-text h1 em { font-style: italic; color: var(--accent); }
+    .hero-text h1 strong {
+      font-weight: 700;
+      color: var(--name-first);
+    }
 
     .hero-text p {
-      color: #424242;
+      color: var(--text-secondary);
       font-size: 0.975rem;
       margin-bottom: 1rem;
     }
@@ -106,35 +183,20 @@
       transition: color 0.2s;
     }
     .hero-text p a:hover { color: var(--link-hover); }
+    .hero-text p strong { color: var(--text); }
 
-    .hero-photo {
-      margin-top: 4.8rem;
-    }
+    .hero-photo { margin-top: 4.8rem; }
     .hero-photo img {
       width: 220px;
       height: 275px;
       object-fit: cover;
       border-radius: 4px;
-      border: 1px solid var(--border);
+      border: 1px solid var(--photo-border);
       display: block;
       filter: grayscale(20%);
-      transition: filter 0.3s;
+      transition: filter 0.3s, border-color 0.35s ease;
     }
     .hero-photo img:hover { filter: grayscale(0%); }
-    .hero-photo .photo-placeholder {
-      width: 220px;
-      height: 275px;
-      border-radius: 4px;
-      border: 1px dashed var(--border);
-      background: var(--surface);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-size: 0.75rem;
-      text-align: center;
-      padding: 1rem;
-    }
 
     .badges {
       display: flex;
@@ -149,8 +211,9 @@
       border-radius: 2px;
       background: var(--accent-dim);
       color: var(--accent);
-      border: 1px solid rgba(26,115,232,0.25);
+      border: 1px solid var(--accent-border);
       letter-spacing: 0.04em;
+      transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease;
     }
 
     .cta { margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
@@ -166,7 +229,8 @@
       transition: all 0.2s;
     }
     .btn-primary { background: var(--accent); color: #ffffff; }
-    .btn-primary:hover { background: #1558c0; }
+    .btn-primary:hover { background: var(--accent-hover-bg); }
+    [data-theme="dark"] .btn-primary { color: #1a1a1a; }
     .btn-ghost { border: 1px solid var(--border); color: var(--muted); background: transparent; }
     .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
@@ -196,6 +260,7 @@
       gap: 1rem;
       padding: 0.85rem 0;
       border-bottom: 1px solid var(--border);
+      transition: border-color 0.35s ease;
     }
     .news-item:last-child { border-bottom: none; }
     .news-date {
@@ -204,7 +269,7 @@
       color: var(--muted);
       line-height: 1.5;
     }
-    .news-content { font-size: 0.9rem; color: #424242; }
+    .news-content { font-size: 0.9rem; color: var(--text-secondary); }
     .news-content strong { color: var(--text); }
     .news-content a { color: var(--link); text-underline-offset: 3px; }
     .news-content a:hover { color: var(--link-hover); }
@@ -216,9 +281,9 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 4px;
-      transition: border-color 0.2s, transform 0.2s;
+      transition: border-color 0.2s, transform 0.2s, background 0.35s ease;
     }
-    .pub-item:hover { border-color: rgba(26,115,232,0.4); transform: translateX(3px); }
+    .pub-item:hover { border-color: var(--pub-hover-border); transform: translateX(3px); }
     .pub-title {
       font-family: 'EB Garamond', serif;
       font-size: 1.05rem;
@@ -234,9 +299,9 @@
       gap: 0.3rem;
       font-family: 'DM Mono', monospace;
       font-size: 0.68rem;
-      color: #e8b84b;
-      background: rgba(232,184,75,0.1);
-      border: 1px solid rgba(232,184,75,0.3);
+      color: var(--award-color);
+      background: var(--award-bg);
+      border: 1px solid var(--award-border);
       border-radius: 2px;
       padding: 0.15rem 0.5rem;
       margin-bottom: 0.65rem;
@@ -248,8 +313,8 @@
       font-family: 'DM Mono', monospace;
       font-size: 0.68rem;
       color: var(--muted);
-      background: rgba(117,117,117,0.08);
-      border: 1px solid rgba(117,117,117,0.2);
+      background: var(--status-bg);
+      border: 1px solid var(--status-border);
       border-radius: 2px;
       padding: 0.15rem 0.5rem;
       margin-bottom: 0.65rem;
@@ -268,7 +333,6 @@
     }
     .pub-link:hover { color: var(--accent); border-color: var(--accent); }
 
-    /* YEAR DIVIDERS */
     .pub-year {
       font-family: 'DM Mono', monospace;
       font-size: 0.72rem;
@@ -279,20 +343,57 @@
     }
     .pub-year:first-child { margin-top: 0; }
 
+    /* FOOTER */
     footer {
       border-top: 1px solid var(--border);
-      padding: 1.5rem 2rem;
+      padding: 2rem 2rem 1.5rem;
       text-align: center;
       font-size: 0.75rem;
       color: var(--muted);
       font-family: 'DM Mono', monospace;
+      transition: border-color 0.35s ease;
     }
+
+    .footer-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .footer-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      color: var(--icon-color);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .footer-icons a:hover {
+      color: var(--icon-hover);
+      border-color: var(--icon-hover);
+      transform: translateY(-2px);
+    }
+    .footer-icons svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    .footer-text {
+      margin-top: 0.75rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+    .footer-text a { color: var(--link); }
 
     @media (max-width: 600px) {
       .hero { grid-template-columns: 1fr; }
       .hero-photo { order: -1; margin-top: 0; }
       .hero-photo img { width: 160px; height: 200px; }
-      .hero-photo .photo-placeholder { width: 160px; height: 200px; }
       .news-item { grid-template-columns: 80px 1fr; }
       nav { padding: 0 1rem; }
       .nav-links { gap: 1.25rem; }
@@ -303,19 +404,25 @@
 
   <nav>
     <a class="nav-brand" href="#">Boyang Xu</a>
-    <ul class="nav-links">
-      <li><a href="#" class="active">about</a></li>
-      <li><a href="#news">news</a></li>
-      <li><a href="#publications">publications</a></li>
-      <li><a href="Boyang_Xu_Resume.pdf">cv</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#" class="active">about</a></li>
+        <li><a href="#news">news</a></li>
+        <li><a href="#publications">publications</a></li>
+        <li><a href="Boyang_Xu_Resume.pdf">cv</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">
+        <span class="icon-sun">&#9728;&#65039;</span>
+        <span class="icon-moon">&#127769;</span>
+      </button>
+    </div>
   </nav>
 
   <main>
 
     <div class="hero">
       <div class="hero-text">
-        <h1>Boyang <em>Xu</em></h1>
+        <h1><strong>Boyang</strong> Xu</h1>
 
         <p>
           I am a 4th-year Ph.D. student in Data Science affiliated with the <a href="https://scai.engineering.asu.edu/">School of Computing and Augmented Intelligence (SCAI)</a> at
@@ -344,7 +451,7 @@
         <div class="cta">
           <a class="btn btn-primary" href="mailto:boyangxu@asu.edu">✉ Email</a>
           <a class="btn btn-ghost" href="https://scholar.google.com/citations?user=EUMfHkgAAAAJ&hl=en">Google Scholar</a>
-          <a class="btn btn-ghost" href="https://github.com/BoyangXu">GitHub</a>
+          <a class="btn btn-ghost" href="https://github.com/BoyangASU">GitHub</a>
           <a class="btn btn-ghost" href="Boyang_Xu_Resume.pdf">CV (PDF)</a>
           <a class="btn btn-ghost" href="https://linkedin.com/in/boyang-xu-58057b2b1">LinkedIn</a>
         </div>
@@ -410,7 +517,6 @@
 
       <div class="pub-list">
 
-        <!-- ==================== 2026 ==================== -->
         <div class="pub-year">2026</div>
 
         <div class="pub-item">
@@ -439,7 +545,6 @@
           </div>
         </div>
 
-        <!-- ==================== 2025 ==================== -->
         <div class="pub-year">2025</div>
 
         <div class="pub-item">
@@ -451,7 +556,6 @@
           <div class="pub-award">🏆 Best Conference Paper Award, IEEE CASE 2025</div>
           <div class="pub-links">
             <a class="pub-link" href="https://ieeexplore.ieee.org/abstract/document/11163884">paper</a>
-            <!-- <a class="pub-link" href="#">code</a> -->
           </div>
         </div>
 
@@ -478,8 +582,8 @@
           </div>
         </div>
 
-        <!-- ==================== 2024 ==================== -->
         <div class="pub-year">2024</div>
+
         <div class="pub-item">
           <div class="pub-title">Support-Structure Decision in 3D Printing With Unsupervised Computer Vision</div>
           <div class="pub-authors">
@@ -502,7 +606,6 @@
           </div>
         </div>
 
-        <!-- ==================== 2023 ==================== -->
         <div class="pub-year">2023</div>
 
         <div class="pub-item">
@@ -510,7 +613,7 @@
           <div class="pub-authors">
             Hasnaa Ouidadi, <span class="me">Boyang Xu</span>, Shenghan Guo
           </div>
-          <div class="pub-venue"> International Manufacturing Science and Engineering Conference (MSEC) · September 2023</div>
+          <div class="pub-venue">International Manufacturing Science and Engineering Conference (MSEC) · September 2023</div>
           <div class="pub-links">
             <a class="pub-link" href="https://asmedigitalcollection.asme.org/MSEC/proceedings-abstract/MSEC2023/87233/1168691">paper</a>
           </div>
@@ -522,8 +625,43 @@
   </main>
 
   <footer>
-    © 2026 Boyang Xu · boyangxu@asu.edu · Last updated: March 2026
+    <div class="footer-icons">
+      <a href="mailto:boyangxu@asu.edu" aria-label="Email">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </a>
+      <a href="https://scholar.google.com/citations?user=EUMfHkgAAAAJ&hl=en" aria-label="Google Scholar">
+        <svg viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/boyang-xu-58057b2b1" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+      </a>
+    </div>
+    <div class="footer-text">
+      The best way to reach me is to send me an <a href="mailto:boyangxu@asu.edu">email</a>.
+    </div>
+    <div class="footer-text" style="margin-top:0.5rem;">
+      © 2026 Boyang Xu · Last updated: March 2026
+    </div>
   </footer>
+
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      html.setAttribute('data-theme', saved);
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      html.setAttribute('data-theme', 'dark');
+    }
+
+    toggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  </script>
 
 </body>
 </html>
