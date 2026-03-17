@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Boyang Xu — Academic Homepage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f5f5f5;
+      --border: #e0e0e0;
+      --text: #212121;
+      --muted: #757575;
+      --accent: #1a73e8;
+      --accent-dim: rgba(26, 115, 232, 0.08);
+      --link: #1565c0;
+      --link-hover: #0d47a1;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2.5rem;
+      height: 56px;
+    }
+
+    .nav-brand {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.15rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 5rem 2rem 6rem;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 4rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-text h1 {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    .hero-text h1 em { font-style: italic; color: var(--accent); }
+
+    .hero-text p {
+      color: #424242;
+      font-size: 0.975rem;
+      margin-bottom: 1rem;
+    }
+    .hero-text p a {
+      color: var(--link);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+    .hero-text p a:hover { color: var(--link-hover); }
+
+    .hero-photo {
+      margin-top: 4.8rem;
+    }
+    .hero-photo img {
+      width: 220px;
+      height: 275px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      display: block;
+      filter: grayscale(20%);
+      transition: filter 0.3s;
+    }
+    .hero-photo img:hover { filter: grayscale(0%); }
+    .hero-photo .photo-placeholder {
+      width: 220px;
+      height: 275px;
+      border-radius: 4px;
+      border: 1px dashed var(--border);
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.75rem;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+    }
+    .badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 2px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid rgba(26,115,232,0.25);
+      letter-spacing: 0.04em;
+    }
+
+    .cta { margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 3px;
+      font-size: 0.825rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-primary { background: var(--accent); color: #ffffff; }
+    .btn-primary:hover { background: #1558c0; }
+    .btn-ghost { border: 1px solid var(--border); color: var(--muted); background: transparent; }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    section { margin-bottom: 3.5rem; animation: fadeUp 0.6s ease both; }
+    section:nth-child(2) { animation-delay: 0.1s; }
+    section:nth-child(3) { animation-delay: 0.2s; }
+    section:nth-child(4) { animation-delay: 0.3s; }
+
+    .section-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* NEWS */
+    .news-list { display: flex; flex-direction: column; }
+    .news-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .news-item:last-child { border-bottom: none; }
+    .news-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .news-content { font-size: 0.9rem; color: #424242; }
+    .news-content strong { color: var(--text); }
+    .news-content a { color: var(--link); text-underline-offset: 3px; }
+    .news-content a:hover { color: var(--link-hover); }
+
+    /* PUBLICATIONS */
+    .pub-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    .pub-item {
+      padding: 1.25rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .pub-item:hover { border-color: rgba(26,115,232,0.4); transform: translateX(3px); }
+    .pub-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+    .pub-authors { font-size: 0.83rem; color: var(--muted); margin-bottom: 0.35rem; }
+    .pub-authors .me { color: var(--text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+    .pub-venue { font-size: 0.8rem; color: var(--accent); font-style: italic; margin-bottom: 0.75rem; }
+    .pub-award {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: #e8b84b;
+      background: rgba(232,184,75,0.1);
+      border: 1px solid rgba(232,184,75,0.3);
+      border-radius: 2px;
+      padding: 0.15rem 0.5rem;
+      margin-bottom: 0.65rem;
+    }
+    .pub-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      background: rgba(117,117,117,0.08);
+      border: 1px solid rgba(117,117,117,0.2);
+      border-radius: 2px;
+      padding: 0.15rem 0.5rem;
+      margin-bottom: 0.65rem;
+    }
+    .pub-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .pub-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.55rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .pub-link:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* YEAR DIVIDERS */
+    .pub-year {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    .pub-year:first-child { margin-top: 0; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+    }
+
+    @media (max-width: 600px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-photo { order: -1; margin-top: 0; }
+      .hero-photo img { width: 160px; height: 200px; }
+      .hero-photo .photo-placeholder { width: 160px; height: 200px; }
+      .news-item { grid-template-columns: 80px 1fr; }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="#">Boyang Xu</a>
+    <ul class="nav-links">
+      <li><a href="#" class="active">about</a></li>
+      <li><a href="#news">news</a></li>
+      <li><a href="#publications">publications</a></li>
+      <li><a href="Boyang_Xu_Resume.pdf">cv</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <div class="hero">
+      <div class="hero-text">
+        <h1>Boyang <em>Xu</em></h1>
+
+        <p>
+          I am a 4th-year Ph.D. student in Data Science affiliated with the <a href="https://scai.engineering.asu.edu/">School of Computing and Augmented Intelligence (SCAI)</a> at
+          Arizona State University,
+          advised by
+          <a href="https://www.public.asu.edu/~hyan46/">Prof.&nbsp;Hao&nbsp;Yan</a>.
+        </p>
+        <p>
+          My research focuses on the intersection of <strong>Reinforcement Learning</strong> and <strong>Generative AI</strong>, specifically investigating how high-dimensional generative models such as diffusion processes and flow matching can enhance decision making under uncertainty.
+          I aim to develop novel algorithmic frameworks that leverage these models to improve sample efficiency and robustness in complex, stochastic environments.
+        </p>
+        <p>
+          I am actively seeking research engineering internships and collaborative research opportunities. If my work resonates with your team's goals, I'd love to connect.
+          Please feel free to reach out via <a href="mailto:boyangxu@asu.edu">email</a>.
+        </p>
+
+        <div class="badges">
+          <span class="badge">Distributional RL</span>
+          <span class="badge">Flow Matching</span>
+          <span class="badge">Generative Models</span>
+          <span class="badge">Uncertainty Quantification</span>
+          <span class="badge">JAX / PyTorch</span>
+          <span class="badge">MDP / Planning</span>
+        </div>
+
+        <div class="cta">
+          <a class="btn btn-primary" href="mailto:boyangxu@asu.edu">✉ Email</a>
+          <a class="btn btn-ghost" href="https://scholar.google.com/citations?user=EUMfHkgAAAAJ&hl=en">Google Scholar</a>
+          <a class="btn btn-ghost" href="https://github.com/BoyangXu">GitHub</a>
+          <a class="btn btn-ghost" href="Boyang_Xu_Resume.pdf">CV (PDF)</a>
+          <a class="btn btn-ghost" href="https://linkedin.com/in/boyang-xu-58057b2b1">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <img src="myhomepage.png" alt="Boyang Xu">
+      </div>
+    </div>
+
+    <!-- NEWS -->
+    <section id="news">
+      <div class="section-title">news</div>
+      <div class="news-list">
+
+        <div class="news-item">
+          <div class="news-date">Jan 2026</div>
+          <div class="news-content">
+            Submitted <strong>"Path-Coupled Bellman Flows for Distributional Reinforcement Learning"</strong>
+            to <strong>ICML 2026</strong>.
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="news-date">Aug 2025</div>
+          <div class="news-content">
+            🏆 Received the <strong>Best Conference Paper Award</strong> at <strong>IEEE CASE 2025</strong> for
+            "Multi-modal Generative Modeling of Event Sequences and Time Series for Solar PV Systems."
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="news-date">Aug 2025</div>
+          <div class="news-content">
+            Paper accepted to <strong>Journal of Quality Technology</strong>:
+            "Partially Observable Markov Decision Process Framework for Operating Condition Optimization
+            Using Real-Time Degradation Signals."
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="news-date">Jun 2024</div>
+          <div class="news-content">
+            Paper presented at <strong>ASME MSEC 2024</strong>:
+            "Support-Structure Decision in 3D Printing With Unsupervised Computer Vision."
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="news-date">Jun 2023</div>
+          <div class="news-content">
+            Selected as <strong>Finalist</strong> for the DAIS Division Best Student Paper Competition
+            at <strong>IISE 2023</strong> Annual Conference.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications">
+      <div class="section-title">publications</div>
+
+      <div class="pub-list">
+
+        <!-- ==================== 2026 ==================== -->
+        <div class="pub-year">2026</div>
+
+        <div class="pub-item">
+          <div class="pub-title">Path-Coupled Bellman Flows for Distributional Reinforcement Learning</div>
+          <div class="pub-authors">
+            <span class="me">Boyang Xu</span>, Qing Zou, Siqin Yang, Hao Yan
+          </div>
+          <div class="pub-venue">International Conference on Machine Learning (ICML) 2026 · Under Review</div>
+          <div class="pub-status">📝 Under Review</div>
+          <div class="pub-links">
+            <a class="pub-link" href="#">paper</a>
+            <a class="pub-link" href="#">code</a>
+            <a class="pub-link" href="#">arxiv</a>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-title">Adaptive Sampling for Automated Post-Disaster Rapid Damage Assessment via Level-Set Cost-Aware Bayesian Optimization</div>
+          <div class="pub-authors">
+            <span class="me">Boyang Xu</span>, Mostafa Reisi, Mohammad Ilbeigi, Hao Yan
+          </div>
+          <div class="pub-venue">Expert Systems with Applications · Under Review</div>
+          <div class="pub-status">📝 Under Review</div>
+          <div class="pub-links">
+            <a class="pub-link" href="#">paper</a>
+          </div>
+        </div>
+
+        <!-- ==================== 2025 ==================== -->
+        <div class="pub-year">2025</div>
+
+        <div class="pub-item">
+          <div class="pub-title">Multi-modal Generative Modeling of Event Sequences and Time Series for Solar PV Systems</div>
+          <div class="pub-authors">
+            Jiayu Huang, <span class="me">Boyang Xu</span>, Yongming Liu, Hao Yan
+          </div>
+          <div class="pub-venue">IEEE International Conference on Automation Science and Engineering (CASE) · August 2025</div>
+          <div class="pub-award">🏆 Best Conference Paper Award, IEEE CASE 2025</div>
+          <div class="pub-links">
+            <a class="pub-link" href="https://ieeexplore.ieee.org/abstract/document/11163884">paper</a>
+            <!-- <a class="pub-link" href="#">code</a> -->
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-title">Partially Observable Markov Decision Process Framework for Operating Condition Optimization Using Real-Time Degradation Signals</div>
+          <div class="pub-authors">
+            <span class="me">Boyang Xu</span>, Yunyi Kang, Xinyu Zhao, Hao Yan, Feng Ju
+          </div>
+          <div class="pub-venue">Journal of Quality Technology · August 2025</div>
+          <div class="pub-links">
+            <a class="pub-link" href="https://www.tandfonline.com/doi/abs/10.1080/00224065.2025.2590515">paper</a>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-title">Data quality improvement and geometric information recovery for resistance spot welding with Spatial-Temporal Fast Fourier Transform</div>
+          <div class="pub-authors">
+            <span class="me">Boyang Xu</span>, Shenghan Guo
+          </div>
+          <div class="pub-venue">Quality Engineering · May 2025</div>
+          <div class="pub-award">🏆 Finalist in DAIS Division Best Student Paper Competition, IISE 2023</div>
+          <div class="pub-links">
+            <a class="pub-link" href="https://www.tandfonline.com/doi/abs/10.1080/08982112.2025.2509008">paper</a>
+          </div>
+        </div>
+
+        <!-- ==================== 2024 ==================== -->
+        <div class="pub-year">2024</div>
+        <div class="pub-item">
+          <div class="pub-title">Support-Structure Decision in 3D Printing With Unsupervised Computer Vision</div>
+          <div class="pub-authors">
+            Shenghan Guo, Hasnaa Ouidadi, <span class="me">Boyang Xu</span>
+          </div>
+          <div class="pub-venue">International Manufacturing Science and Engineering Conference (MSEC) · August 2024</div>
+          <div class="pub-links">
+            <a class="pub-link" href="https://asmedigitalcollection.asme.org/MSEC/proceedings-abstract/MSEC2024/88117/1203197">paper</a>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-title">Three-Dimensional X-Ray Computed Tomography Image Segmentation and Point Cloud Reconstruction for Internal Defect Identification in Laser Powder Bed Fused Parts</div>
+          <div class="pub-authors">
+            <span class="me">Boyang Xu</span>, Hasnaa Ouidadi, Nicole Van Handel, Shenghan Guo
+          </div>
+          <div class="pub-venue">Journal of Manufacturing Science and Engineering (JMSE) · June 2024</div>
+          <div class="pub-links">
+            <a class="pub-link" href="https://asmedigitalcollection.asme.org/manufacturingscience/article-abstract/146/9/091002/1198901/Three-Dimensional-X-Ray-Computed-Tomography-Image">paper</a>
+          </div>
+        </div>
+
+        <!-- ==================== 2023 ==================== -->
+        <div class="pub-year">2023</div>
+
+        <div class="pub-item">
+          <div class="pub-title">Defect Segmentation From X-Ray Computed Tomography of Laser Powder Bed Fusion Parts: A Comparative Study Among Machine Learning, Deep Learning, and Statistical Image Thresholding Methods</div>
+          <div class="pub-authors">
+            Hasnaa Ouidadi, <span class="me">Boyang Xu</span>, Shenghan Guo
+          </div>
+          <div class="pub-venue"> International Manufacturing Science and Engineering Conference (MSEC) · September 2023</div>
+          <div class="pub-links">
+            <a class="pub-link" href="https://asmedigitalcollection.asme.org/MSEC/proceedings-abstract/MSEC2023/87233/1168691">paper</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Boyang Xu · boyangxu@asu.edu · Last updated: March 2026
+  </footer>
+
+</body>
+</html>
