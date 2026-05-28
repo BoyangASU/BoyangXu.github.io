@@ -343,6 +343,49 @@
     }
     .pub-year:first-child { margin-top: 0; }
 
+    /* ===== PUBLICATION THUMBNAIL FIGURE ===== */
+    .pub-with-fig {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+    .pub-fig {
+      width: 180px;
+      flex-shrink: 0;
+      border-radius: 3px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      transition: border-color 0.2s;
+    }
+    .pub-item:hover .pub-fig {
+      border-color: var(--pub-hover-border);
+    }
+    .pub-fig img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .pub-abstract {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+      font-style: italic;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 600px) {
+      .pub-with-fig {
+        grid-template-columns: 1fr;
+      }
+      .pub-fig {
+        width: 100%;
+        max-width: 220px;
+      }
+    }
+    /* ===== END THUMBNAIL STYLES ===== */
+
     /* FOOTER */
     footer {
       border-top: 1px solid var(--border);
@@ -548,62 +591,59 @@
 
       <div class="pub-list">
 
-        <!-- <div class="pub-year">2026</div>
-
-        <div class="pub-item">
-          <div class="pub-title">Path-Coupled Bellman Flows for Distributional Reinforcement Learning</div>
-          <div class="pub-authors">
-            <span class="me">Boyang Xu</span>, Qing Zou, Siqin Yang, Hao Yan
-          </div>
-          <div class="pub-venue">International Conference on Machine Learning (ICML) 2026 · Under Review</div>
-          <div class="pub-status">📝 Under Review</div>
-          <div class="pub-links">
-            <a class="pub-link" href="#">paper</a>
-            <a class="pub-link" href="#">code</a>
-            <a class="pub-link" href="#">arxiv</a>
-          </div>
-        </div>
-
-        <div class="pub-item">
-          <div class="pub-title">Adaptive Sampling for Automated Post-Disaster Rapid Damage Assessment via Level-Set Cost-Aware Bayesian Optimization</div>
-          <div class="pub-authors">
-            <span class="me">Boyang Xu</span>, Mostafa Reisi, Mohammad Ilbeigi, Hao Yan
-          </div>
-          <div class="pub-venue">Expert Systems with Applications · Under Review</div>
-          <div class="pub-status">📝 Under Review</div>
-          <div class="pub-links">
-            <a class="pub-link" href="#">paper</a>
-          </div>
-        </div> -->
         <div class="pub-year">2026</div>
         
+        <!-- ★ EXAMPLE: Publication WITH thumbnail figure -->
         <div class="pub-item">
-          <div class="pub-title">Path-Coupled Bellman Flows for Distributional Reinforcement Learning</div>
-          <div class="pub-authors">
-            <span class="me">Boyang Xu</span>, Qing Zou, Siqin Yang, Hao Yan
-          </div>
-          <div class="pub-venue">Forty-Third International Conference on Machine Learning (ICML) · May 2026</div>
-          <div class="pub-links">
-            <a class="pub-link" href="https://icml.cc/virtual/2026/poster/64218">paper</a>
-            <a class="pub-link" href="https://github.com/BoyangASU/path-coupled-bellman-flows">code</a>
-            <a class="pub-link" href="https://arxiv.org/abs/2605.08253">arxiv</a>
+          <div class="pub-with-fig">
+            <div class="pub-fig">
+              <!-- Replace src with your actual figure, e.g. images/pcbf.png -->
+              <img src="images/pcbf.png" alt="PCBF overview figure">
+            </div>
+            <div class="pub-body">
+              <div class="pub-title">Path-Coupled Bellman Flows for Distributional Reinforcement Learning</div>
+              <div class="pub-authors">
+                <span class="me">Boyang Xu</span>, Qing Zou, Siqin Yang, Hao Yan
+              </div>
+              <div class="pub-venue">Forty-Third International Conference on Machine Learning (ICML) · May 2026</div>
+              <div class="pub-abstract">
+                We introduce path-coupled Bellman flows, a distributional RL method that uses shared-noise coupling between source and target return distributions to reduce variance in flow-matching-based critics.
+              </div>
+              <div class="pub-links">
+                <a class="pub-link" href="https://icml.cc/virtual/2026/poster/64218">paper</a>
+                <a class="pub-link" href="https://github.com/BoyangASU/path-coupled-bellman-flows">code</a>
+                <a class="pub-link" href="https://arxiv.org/abs/2605.08253">arxiv</a>
+              </div>
+            </div>
           </div>
         </div>
         
         <div class="pub-year">2025</div>
 
+        <!-- ★ EXAMPLE: Publication WITH thumbnail figure -->
         <div class="pub-item">
-          <div class="pub-title">Multi-Modal Generative Modeling of Event Sequences and Time Series for Solar PV Systems</div>
-          <div class="pub-authors">
-            Jiayu Huang, <span class="me">Boyang Xu</span>, Yongming Liu, Hao Yan
-          </div>
-          <div class="pub-venue">IEEE International Conference on Automation Science and Engineering (CASE) · August 2025</div>
-          <div class="pub-award">🏆 Best Conference Paper Award, IEEE CASE 2025</div>
-          <div class="pub-links">
-            <a class="pub-link" href="https://ieeexplore.ieee.org/abstract/document/11163884">paper</a>
+          <div class="pub-with-fig">
+            <div class="pub-fig">
+              <img src="images/solar-pv.png" alt="Solar PV multi-modal modeling">
+            </div>
+            <div class="pub-body">
+              <div class="pub-title">Multi-Modal Generative Modeling of Event Sequences and Time Series for Solar PV Systems</div>
+              <div class="pub-authors">
+                Jiayu Huang, <span class="me">Boyang Xu</span>, Yongming Liu, Hao Yan
+              </div>
+              <div class="pub-venue">IEEE International Conference on Automation Science and Engineering (CASE) · August 2025</div>
+              <div class="pub-award">🏆 Best Conference Paper Award, IEEE CASE 2025</div>
+              <div class="pub-abstract">
+                A multi-modal generative framework combining diffusion models with event sequence modeling for solar PV fault diagnosis and prediction.
+              </div>
+              <div class="pub-links">
+                <a class="pub-link" href="https://ieeexplore.ieee.org/abstract/document/11163884">paper</a>
+              </div>
+            </div>
           </div>
         </div>
 
+        <!-- Publication WITHOUT figure (keeps original layout) -->
         <div class="pub-item">
           <div class="pub-title">Partially Observable Markov Decision Process Framework for Operating Condition Optimization Using Real-Time Degradation Signals</div>
           <div class="pub-authors">
