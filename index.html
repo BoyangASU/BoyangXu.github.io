@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== LIGHT THEME ===== */
     :root, [data-theme="light"] {
       --bg: #ffffff;
       --bg-nav: rgba(255,255,255,0.92);
@@ -36,7 +35,6 @@
       --icon-hover: #1a73e8;
     }
 
-    /* ===== DARK THEME (charcoal + teal) ===== */
     [data-theme="dark"] {
       --bg: #2b2b2b;
       --bg-nav: rgba(43,43,43,0.95);
@@ -77,157 +75,60 @@
       transition: background 0.35s ease, color 0.35s ease;
     }
 
-    /* NAV */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      position: sticky; top: 0; z-index: 100;
       background: var(--bg-nav);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 2.5rem;
-      height: 56px;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 2.5rem; height: 56px;
       transition: background 0.35s ease, border-color 0.35s ease;
     }
-
-    .nav-brand {
-      font-family: 'EB Garamond', serif;
-      font-size: 1.15rem;
-      color: var(--text);
-      text-decoration: none;
-    }
-
+    .nav-brand { font-family: 'EB Garamond', serif; font-size: 1.15rem; color: var(--text); text-decoration: none; }
     .nav-right { display: flex; align-items: center; gap: 2rem; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.875rem;
-      letter-spacing: 0.04em;
-      transition: color 0.2s;
-    }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; letter-spacing: 0.04em; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--accent); }
 
-    /* THEME TOGGLE */
     .theme-toggle {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1px solid var(--border); background: var(--surface);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; transition: all 0.3s ease; flex-shrink: 0;
     }
-    .theme-toggle:hover {
-      border-color: var(--accent);
-      transform: rotate(15deg);
-    }
-    .theme-toggle .icon-sun,
-    .theme-toggle .icon-moon { pointer-events: none; line-height: 1; }
+    .theme-toggle:hover { border-color: var(--accent); transform: rotate(15deg); }
+    .theme-toggle .icon-sun, .theme-toggle .icon-moon { pointer-events: none; line-height: 1; }
     [data-theme="light"] .theme-toggle .icon-sun { display: none; }
     [data-theme="light"] .theme-toggle .icon-moon { display: block; }
     [data-theme="dark"] .theme-toggle .icon-sun  { display: block; }
     [data-theme="dark"] .theme-toggle .icon-moon  { display: none; }
 
-    main {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 5rem 2rem 6rem;
-    }
+    main { max-width: 860px; margin: 0 auto; padding: 5rem 2rem 6rem; }
 
-    /* HERO */
     .hero {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 3rem;
-      align-items: start;
-      margin-bottom: 4rem;
-      animation: fadeUp 0.6s ease both;
+      display: grid; grid-template-columns: 1fr auto; gap: 3rem;
+      align-items: start; margin-bottom: 4rem; animation: fadeUp 0.6s ease both;
     }
-
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
-    .hero-text h1 {
-      font-family: 'EB Garamond', serif;
-      font-size: clamp(2.2rem, 5vw, 3rem);
-      font-weight: 400;
-      line-height: 1.15;
-      margin-bottom: 1.5rem;
-      color: var(--name-last);
-    }
-    .hero-text h1 strong {
-      font-weight: 700;
-      color: var(--name-first);
-    }
-
-    .hero-text p {
-      color: var(--text-secondary);
-      font-size: 0.975rem;
-      margin-bottom: 1rem;
-    }
-    .hero-text p a {
-      color: var(--link);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      transition: color 0.2s;
-    }
+    .hero-text h1 { font-family: 'EB Garamond', serif; font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 400; line-height: 1.15; margin-bottom: 1.5rem; color: var(--name-last); }
+    .hero-text h1 strong { font-weight: 700; color: var(--name-first); }
+    .hero-text p { color: var(--text-secondary); font-size: 0.975rem; margin-bottom: 1rem; }
+    .hero-text p a { color: var(--link); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
     .hero-text p a:hover { color: var(--link-hover); }
     .hero-text p strong { color: var(--text); }
 
     .hero-photo { margin-top: 4.8rem; }
-    .hero-photo img {
-      width: 220px;
-      height: 275px;
-      object-fit: cover;
-      border-radius: 4px;
-      border: 1px solid var(--photo-border);
-      display: block;
-      filter: grayscale(20%);
-      transition: filter 0.3s, border-color 0.35s ease;
-    }
+    .hero-photo img { width: 220px; height: 275px; object-fit: cover; border-radius: 4px; border: 1px solid var(--photo-border); display: block; filter: grayscale(20%); transition: filter 0.3s, border-color 0.35s ease; }
     .hero-photo img:hover { filter: grayscale(0%); }
 
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.25rem;
-    }
-    .badge {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      padding: 0.25rem 0.65rem;
-      border-radius: 2px;
-      background: var(--accent-dim);
-      color: var(--accent);
-      border: 1px solid var(--accent-border);
-      letter-spacing: 0.04em;
-      transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease;
-    }
+    .badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+    .badge { font-family: 'DM Mono', monospace; font-size: 0.7rem; padding: 0.25rem 0.65rem; border-radius: 2px; background: var(--accent-dim); color: var(--accent); border: 1px solid var(--accent-border); letter-spacing: 0.04em; transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease; }
 
     .cta { margin-top: 1.5rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.5rem 0.9rem;
-      border-radius: 3px;
-      font-size: 0.825rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 0.9rem; border-radius: 3px; font-size: 0.825rem; font-weight: 500; text-decoration: none; transition: all 0.2s; }
     .btn-primary { background: var(--accent); color: #ffffff; }
     .btn-primary:hover { background: var(--accent-hover-bg); }
     [data-theme="dark"] .btn-primary { color: #1a1a1a; }
@@ -239,108 +140,31 @@
     section:nth-child(3) { animation-delay: 0.2s; }
     section:nth-child(4) { animation-delay: 0.3s; }
 
-    .section-title {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
+    .section-title { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
     .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-    /* NEWS */
     .news-list { display: flex; flex-direction: column; }
-    .news-item {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 1rem;
-      padding: 0.85rem 0;
-      border-bottom: 1px solid var(--border);
-      transition: border-color 0.35s ease;
-    }
+    .news-item { display: grid; grid-template-columns: 120px 1fr; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); transition: border-color 0.35s ease; }
     .news-item:last-child { border-bottom: none; }
-    .news-date {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
+    .news-date { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); line-height: 1.5; }
     .news-content { font-size: 0.9rem; color: var(--text-secondary); }
     .news-content strong { color: var(--text); }
     .news-content a { color: var(--link); text-underline-offset: 3px; }
     .news-content a:hover { color: var(--link-hover); }
 
-    /* PUBLICATIONS */
     .pub-list { display: flex; flex-direction: column; gap: 1.25rem; }
-    .pub-item {
-      padding: 1.25rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      transition: border-color 0.2s, transform 0.2s, background 0.35s ease;
-    }
+    .pub-item { padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; transition: border-color 0.2s, transform 0.2s, background 0.35s ease; }
     .pub-item:hover { border-color: var(--pub-hover-border); transform: translateX(3px); }
-    .pub-title {
-      font-family: 'EB Garamond', serif;
-      font-size: 1.05rem;
-      color: var(--text);
-      margin-bottom: 0.35rem;
-    }
+    .pub-title { font-family: 'EB Garamond', serif; font-size: 1.05rem; color: var(--text); margin-bottom: 0.35rem; }
     .pub-authors { font-size: 0.83rem; color: var(--muted); margin-bottom: 0.35rem; }
     .pub-authors .me { color: var(--text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
     .pub-venue { font-size: 0.8rem; color: var(--accent); font-style: italic; margin-bottom: 0.75rem; }
-    .pub-award {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      color: var(--award-color);
-      background: var(--award-bg);
-      border: 1px solid var(--award-border);
-      border-radius: 2px;
-      padding: 0.15rem 0.5rem;
-      margin-bottom: 0.65rem;
-    }
-    .pub-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      color: var(--muted);
-      background: var(--status-bg);
-      border: 1px solid var(--status-border);
-      border-radius: 2px;
-      padding: 0.15rem 0.5rem;
-      margin-bottom: 0.65rem;
-    }
+    .pub-award { display: inline-flex; align-items: center; gap: 0.3rem; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--award-color); background: var(--award-bg); border: 1px solid var(--award-border); border-radius: 2px; padding: 0.15rem 0.5rem; margin-bottom: 0.65rem; }
+    .pub-status { display: inline-flex; align-items: center; gap: 0.3rem; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); background: var(--status-bg); border: 1px solid var(--status-border); border-radius: 2px; padding: 0.15rem 0.5rem; margin-bottom: 0.65rem; }
     .pub-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-    .pub-link {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.05em;
-      padding: 0.2rem 0.55rem;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      color: var(--muted);
-      text-decoration: none;
-      transition: all 0.15s;
-    }
+    .pub-link { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.05em; padding: 0.2rem 0.55rem; border: 1px solid var(--border); border-radius: 2px; color: var(--muted); text-decoration: none; transition: all 0.15s; }
     .pub-link:hover { color: var(--accent); border-color: var(--accent); }
-
-    .pub-year {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      margin-bottom: 0.75rem;
-      margin-top: 0.5rem;
-    }
+    .pub-year { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.75rem; margin-top: 0.5rem; }
     .pub-year:first-child { margin-top: 0; }
 
     /* ===== PUBLICATION THUMBNAIL FIGURE ===== */
@@ -352,20 +176,25 @@
     }
     .pub-fig {
       width: 180px;
+      aspect-ratio: 4 / 3;
       flex-shrink: 0;
       border-radius: 3px;
       overflow: hidden;
       border: 1px solid var(--border);
       background: var(--bg);
       transition: border-color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .pub-item:hover .pub-fig {
       border-color: var(--pub-hover-border);
     }
     .pub-fig img {
       width: 100%;
+      height: 100%;
       display: block;
-      object-fit: cover;
+      object-fit: contain;
     }
     .pub-abstract {
       font-size: 0.82rem;
@@ -374,63 +203,18 @@
       font-style: italic;
       line-height: 1.55;
     }
-
     @media (max-width: 600px) {
-      .pub-with-fig {
-        grid-template-columns: 1fr;
-      }
-      .pub-fig {
-        width: 100%;
-        max-width: 220px;
-      }
+      .pub-with-fig { grid-template-columns: 1fr; }
+      .pub-fig { width: 100%; max-width: 220px; }
     }
     /* ===== END THUMBNAIL STYLES ===== */
 
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem 2rem 1.5rem;
-      text-align: center;
-      font-size: 0.75rem;
-      color: var(--muted);
-      font-family: 'DM Mono', monospace;
-      transition: border-color 0.35s ease;
-    }
-
-    .footer-icons {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    .footer-icons a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      color: var(--icon-color);
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-    .footer-icons a:hover {
-      color: var(--icon-hover);
-      border-color: var(--icon-hover);
-      transform: translateY(-2px);
-    }
-    .footer-icons svg {
-      width: 22px;
-      height: 22px;
-      fill: currentColor;
-    }
-
-    .footer-text {
-      margin-top: 0.75rem;
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
+    footer { border-top: 1px solid var(--border); padding: 2rem 2rem 1.5rem; text-align: center; font-size: 0.75rem; color: var(--muted); font-family: 'DM Mono', monospace; transition: border-color 0.35s ease; }
+    .footer-icons { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; }
+    .footer-icons a { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 6px; border: 1px solid var(--border); color: var(--icon-color); text-decoration: none; transition: all 0.2s ease; }
+    .footer-icons a:hover { color: var(--icon-hover); border-color: var(--icon-hover); transform: translateY(-2px); }
+    .footer-icons svg { width: 22px; height: 22px; fill: currentColor; }
+    .footer-text { margin-top: 0.75rem; font-size: 0.72rem; color: var(--muted); }
     .footer-text a { color: var(--link); }
 
     @media (max-width: 600px) {
@@ -466,7 +250,6 @@
     <div class="hero">
       <div class="hero-text">
         <h1><strong>Boyang</strong> Xu</h1>
-
         <p>
           I am a 5th-year Ph.D. student in Data Science affiliated with the <a href="https://scai.engineering.asu.edu/">School of Computing and Augmented Intelligence (SCAI)</a> at
           Arizona State University,
@@ -481,7 +264,6 @@
           I am actively seeking research engineering internships and collaborative research opportunities. If my work resonates with your team's goals, I'd love to connect.
           Please feel free to reach out via <a href="mailto:boyangxu@asu.edu">email</a>.
         </p>
-
         <div class="badges">
           <span class="badge">Distributional/Multi-Agent RL</span>
           <span class="badge">Bayesian Optimization</span>
@@ -490,7 +272,6 @@
           <span class="badge">JAX / PyTorch</span>
           <span class="badge">Multi-Modal Modeling</span>
         </div>
-
         <div class="cta">
           <a class="btn btn-primary" href="mailto:boyangxu@asu.edu">✉ Email</a>
           <a class="btn btn-ghost" href="https://scholar.google.com/citations?user=EUMfHkgAAAAJ&hl=en">Google Scholar</a>
@@ -499,7 +280,6 @@
           <a class="btn btn-ghost" href="https://linkedin.com/in/boyang-xu-58057b2b1">LinkedIn</a>
         </div>
       </div>
-
       <div class="hero-photo">
         <img src="myhomepage.png" alt="Boyang Xu">
       </div>
@@ -515,42 +295,36 @@
             I will be serving as a Session Chair for the 2026 INFORMS Annual Meeting! I am organizing the session <strong> "Reinforcement Learning for Sequential Decision Making in Complex Systems" </strong> under the <strong> Quality, Statistics, and Reliability (QSR) </strong> cluster. My session will focus on the intersection of RL and generative models for decision-making. See you in Nov, San Francisco, CA!
           </div>
         </div>
-        
         <div class="news-item">
           <div class="news-date">May 2026</div>
           <div class="news-content">
             My paper, "Path-Coupled Bellman Flows for Distributional Reinforcement Learning", is accepted to <strong>Forty-Third International Conference on Machine Learning (ICML)</strong>. Looking forward to present our paper in Seoul, South Korea.
           </div>
         </div>
-        
         <div class="news-item">
           <div class="news-date">Mar 2026</div>
           <div class="news-content">
             I will be the reviewer for <strong>NeurIPS 2026</strong>. Look forward to see more interesting papers.
           </div>
         </div>
-        
         <div class="news-item">
           <div class="news-date">Feb 2026</div>
           <div class="news-content">
             I will be the reviewer for <strong>ICML 2026</strong>. Look forward to more contributions to the community.
           </div>
         </div>
-        
         <div class="news-item">
           <div class="news-date">Oct 2025</div>
           <div class="news-content">
             I have presented my paper "Adaptive Sampling for Automated Post-Disaster Rapid Damage Assessment via Level-Set Cost-Aware Bayesian Optimization" at <strong> Quality, Statistics, and Reliability (QSR) Session in 2025 INFORMS </strong>  (Atlanta, Georgia).
           </div>
         </div>
-      
         <div class="news-item">
           <div class="news-date">Aug 2025</div>
           <div class="news-content">
             My collaborated paper, "Multi-modal Generative Modeling of Event Sequences and Time Series for Solar PV Systems" with Jiayu Huang received the <strong>Best Conference Paper Award</strong> at <strong>IEEE CASE 2025</strong> (Los Angeles, California).
           </div>
         </div>
-
         <div class="news-item">
           <div class="news-date">Aug 2025</div>
           <div class="news-content">
@@ -559,14 +333,12 @@
             Using Real-Time Degradation Signals."
           </div>
         </div>
-
         <div class="news-item">
           <div class="news-date">Jun 2024</div>
           <div class="news-content">
             My collaborated paper is presented at <strong> MSEC 2024</strong>:"Support-Structure Decision in 3D Printing With Unsupervised Computer Vision."
           </div>
         </div>
-
         <div class="news-item">
           <div class="news-date">Jun 2023</div>
           <div class="news-content">
@@ -574,30 +346,25 @@
             at <strong>IISE 2023</strong> Annual Conference (New Orleans, Louisiana).
           </div>
         </div>
-
         <div class="news-item">
           <div class="news-date">Jun 2023</div>
           <div class="news-content">
             Our poster, "3D Image Segmentation for Internal Defect Identification in LPBF" was accepted by <strong>MSEC 2023</strong> (New Brunswick, NJ).
           </div>
         </div>
-
       </div>
     </section>
 
     <!-- PUBLICATIONS -->
     <section id="publications">
       <div class="section-title">publications</div>
-
       <div class="pub-list">
 
         <div class="pub-year">2026</div>
-        
-        <!-- ★ EXAMPLE: Publication WITH thumbnail figure -->
+
         <div class="pub-item">
           <div class="pub-with-fig">
             <div class="pub-fig">
-              <!-- Replace src with your actual figure, e.g. images/pcbf.png -->
               <img src="image/pcbf.png" alt="PCBF overview figure">
             </div>
             <div class="pub-body">
@@ -617,10 +384,9 @@
             </div>
           </div>
         </div>
-        
+
         <div class="pub-year">2025</div>
 
-        <!-- ★ EXAMPLE: Publication WITH thumbnail figure -->
         <div class="pub-item">
           <div class="pub-with-fig">
             <div class="pub-fig">
@@ -643,7 +409,6 @@
           </div>
         </div>
 
-        <!-- Publication WITHOUT figure (keeps original layout) -->
         <div class="pub-item">
           <div class="pub-with-fig">
             <div class="pub-fig">
@@ -704,7 +469,7 @@
         <div class="pub-item">
           <div class="pub-with-fig">
             <div class="pub-fig">
-              <img src="image/xct.png" alt="POMDP for real-time signal degradation">
+              <img src="image/xct.png" alt="X-ray CT segmentation">
             </div>
             <div class="pub-body">
               <div class="pub-title">Three-Dimensional X-Ray Computed Tomography Image Segmentation and Point Cloud Reconstruction for Internal Defect Identification in Laser Powder Bed Fused Parts</div>
@@ -724,7 +489,6 @@
         <div class="pub-item">
           <div class="pub-with-fig">
             <div class="pub-fig">
-              <!-- Replace src with your actual figure, e.g. images/pcbf.png -->
               <img src="image/imgseg.png" alt="Image segmentation figure">
             </div>
             <div class="pub-body">
@@ -765,14 +529,12 @@
   <script>
     const toggle = document.getElementById('themeToggle');
     const html = document.documentElement;
-
     const saved = localStorage.getItem('theme');
     if (saved) {
       html.setAttribute('data-theme', saved);
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       html.setAttribute('data-theme', 'dark');
     }
-
     toggle.addEventListener('click', () => {
       const current = html.getAttribute('data-theme');
       const next = current === 'dark' ? 'light' : 'dark';
