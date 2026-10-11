@@ -209,6 +209,35 @@
     }
     /* ===== END THUMBNAIL STYLES ===== */
 
+    /* ===== RESEARCH HIGHLIGHTS ===== */
+    .rh-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    .rh-item {
+      display: grid; grid-template-columns: 300px 1fr; gap: 1.5rem; align-items: center;
+      padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 4px;
+      transition: border-color 0.2s, background 0.35s ease;
+    }
+    .rh-item:hover { border-color: var(--pub-hover-border); }
+    .rh-visual { display: block; border-radius: 3px; overflow: hidden; line-height: 0; background: #0d1226; transition: transform 0.25s ease; }
+    .rh-visual:hover { transform: translateY(-2px); }
+    .rh-visual svg { width: 100%; height: auto; display: block; }
+    .rh-kicker { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 0.35rem; }
+    .rh-title { font-family: 'EB Garamond', serif; font-weight: 600; font-size: 1.4rem; line-height: 1.2; margin-bottom: 0.6rem; }
+    .rh-title a { color: var(--text); text-decoration: none; transition: color 0.2s; }
+    .rh-title a:hover { color: var(--accent); }
+    .rh-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.6rem; }
+    .rh-note { font-size: 0.8rem; color: var(--muted); font-style: italic; margin-bottom: 0.85rem; }
+    .rh-links { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+    .rh-primary {
+      font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.05em;
+      padding: 0.2rem 0.65rem; border: 1px solid var(--accent); border-radius: 2px;
+      background: var(--accent); color: #ffffff; text-decoration: none; transition: background 0.2s, border-color 0.2s;
+    }
+    .rh-primary:hover { background: var(--accent-hover-bg); border-color: var(--accent-hover-bg); }
+    [data-theme="dark"] .rh-primary { color: #1a1a1a; }
+    @media (max-width: 680px) { .rh-item { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .rh-moving { display: none; } .rh-visual:hover { transform: none; } }
+    /* ===== END RESEARCH HIGHLIGHTS ===== */
+
     footer { border-top: 1px solid var(--border); padding: 2rem 2rem 1.5rem; text-align: center; font-size: 0.75rem; color: var(--muted); font-family: 'DM Mono', monospace; transition: border-color 0.35s ease; }
     .footer-icons { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; }
     .footer-icons a { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 6px; border: 1px solid var(--border); color: var(--icon-color); text-decoration: none; transition: all 0.2s ease; }
@@ -225,6 +254,15 @@
       nav { padding: 0 1rem; }
       .nav-links { gap: 1.25rem; }
     }
+
+    /* Narrow screens: five nav links no longer fit beside the name, so the name
+       (already shown large in the hero) is hidden and the links can scroll sideways. */
+    @media (max-width: 600px) {
+      .nav-brand { display: none; }
+      .nav-right { flex: 1; min-width: 0; justify-content: space-between; gap: 0.75rem; }
+      .nav-links { gap: 1rem; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+      .nav-links::-webkit-scrollbar { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -234,6 +272,7 @@
     <div class="nav-right">
       <ul class="nav-links">
         <li><a href="#" class="active">about</a></li>
+        <li><a href="#research">research</a></li>
         <li><a href="#news">news</a></li>
         <li><a href="#publications">publications</a></li>
         <li><a href="Boyang_Xu_Resume.pdf">cv</a></li>
@@ -284,6 +323,52 @@
         <img src="myhomepage.png" alt="Boyang Xu">
       </div>
     </div>
+
+    <!-- RESEARCH HIGHLIGHTS -->
+    <section id="research">
+      <div class="section-title">research highlights</div>
+      <div class="rh-list">
+
+        <article class="rh-item">
+          <a class="rh-visual" href="https://boyangasu.github.io/path-coupled-bellman-flows/" aria-label="Open the Path-Coupled Bellman Flows project page">
+            <svg viewBox="0 0 360 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pairs of flow paths leave a shared Gaussian noise draw; the amber successor path ends at X prime and the blue current path ends at R plus gamma X prime.">
+              <defs><radialGradient id="rh-glow" cx="70%" cy="45%" r="65%"><stop offset="0" stop-color="#28409a" stop-opacity=".55"/><stop offset="1" stop-color="#0d1226" stop-opacity="0"/></radialGradient></defs>
+              <rect width="360" height="230" fill="#0d1226"/><rect width="360" height="230" fill="url(#rh-glow)"/>
+              <g fill="none" stroke-width=".8"><path d="M66 159.7L296 154.9" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 159.7L296 151.1" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 155.1L296 152.9" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 155.1L296 127.1" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 148.2L296 149.5" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 148.2L296 124.0" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 141.3L296 145.6" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 141.3L296 120.5" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 139.1L296 144.2" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 139.1L296 141.5" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 135.7L296 141.5" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 135.7L296 139.1" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 133.2L296 139.0" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 133.2L296 114.6" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 131.0L296 135.7" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 131.0L296 111.6" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 128.3L296 123.3" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 128.3L296 100.5" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 126.2L296 115.8" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 126.2L296 115.9" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 123.9L296 112.0" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 123.9L296 90.3" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 122.7L296 110.4" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 122.7L296 111.0" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 120.1L296 107.4" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 120.1L296 86.1" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 118.2L296 105.5" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 118.2L296 106.6" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 116.5L296 103.7" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 116.5L296 82.8" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 114.9L296 102.1" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 114.9L296 81.4" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 112.5L296 99.6" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 112.5L296 79.1" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 110.5L296 97.3" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 110.5L296 77.1" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 107.6L296 93.3" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 107.6L296 73.4" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 105.6L296 88.7" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 105.6L296 69.3" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 103.9L296 82.0" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 103.9L296 85.5" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 101.4L296 76.3" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 101.4L296 58.2" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 99.2L296 73.8" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 99.2L296 78.1" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 95.5L296 70.9" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 95.5L296 53.3" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 91.3L296 68.3" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 91.3L296 51.0" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 87.8L296 66.5" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 87.8L296 49.3" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 81.9L296 63.8" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 81.9L296 69.1" stroke="#7fa0ff" stroke-opacity=".24"/><path d="M66 65.8L296 57.5" stroke="#f2a65a" stroke-opacity=".2"/><path d="M66 65.8L296 41.2" stroke="#7fa0ff" stroke-opacity=".24"/></g>
+              <path d="M66 186.0L65.7 186.0L65.6 184.7L65.6 183.3L65.5 182.0L65.5 180.6L65.4 179.3L65.4 177.9L65.3 176.6L65.2 175.2L65.1 173.9L64.9 172.6L64.7 171.2L64.4 169.9L64.1 168.5L63.8 167.2L63.5 165.8L63.1 164.5L62.7 163.1L62.2 161.8L61.6 160.5L60.9 159.1L60.0 157.8L59.1 156.4L58.1 155.1L57.1 153.7L56.2 152.4L55.4 151.0L54.7 149.7L53.9 148.4L53.1 147.0L52.1 145.7L51.1 144.3L49.9 143.0L48.7 141.6L47.5 140.3L46.3 138.9L45.1 137.6L44.0 136.3L42.8 134.9L41.7 133.6L40.6 132.2L39.7 130.9L38.9 129.5L38.3 128.2L37.8 126.8L37.4 125.5L37.0 124.2L36.7 122.8L36.5 121.5L36.4 120.1L36.3 118.8L36.4 117.4L36.4 116.1L36.4 114.7L36.3 113.4L36.1 112.1L36.0 110.7L36.0 109.4L36.1 108.0L36.3 106.7L36.7 105.3L37.3 104.0L38.1 102.6L39.1 101.3L40.3 99.9L41.7 98.6L43.2 97.3L44.8 95.9L46.3 94.6L47.8 93.2L49.1 91.9L50.3 90.5L51.4 89.2L52.4 87.8L53.4 86.5L54.4 85.2L55.4 83.8L56.4 82.5L57.4 81.1L58.4 79.8L59.2 78.4L59.9 77.1L60.6 75.7L61.2 74.4L61.8 73.1L62.3 71.7L62.8 70.4L63.2 69.0L63.6 67.7L63.9 66.3L64.2 65.0L64.5 63.6L64.6 62.3L64.8 61.0L64.9 59.6L65.0 58.3L65.1 56.9L65.3 55.6L65.4 54.2L65.5 52.9L65.6 51.5L66 51.5Z" fill="#c4d0ee" fill-opacity=".14"/><path d="M65.7 186.0L65.6 184.7L65.6 183.3L65.5 182.0L65.5 180.6L65.4 179.3L65.4 177.9L65.3 176.6L65.2 175.2L65.1 173.9L64.9 172.6L64.7 171.2L64.4 169.9L64.1 168.5L63.8 167.2L63.5 165.8L63.1 164.5L62.7 163.1L62.2 161.8L61.6 160.5L60.9 159.1L60.0 157.8L59.1 156.4L58.1 155.1L57.1 153.7L56.2 152.4L55.4 151.0L54.7 149.7L53.9 148.4L53.1 147.0L52.1 145.7L51.1 144.3L49.9 143.0L48.7 141.6L47.5 140.3L46.3 138.9L45.1 137.6L44.0 136.3L42.8 134.9L41.7 133.6L40.6 132.2L39.7 130.9L38.9 129.5L38.3 128.2L37.8 126.8L37.4 125.5L37.0 124.2L36.7 122.8L36.5 121.5L36.4 120.1L36.3 118.8L36.4 117.4L36.4 116.1L36.4 114.7L36.3 113.4L36.1 112.1L36.0 110.7L36.0 109.4L36.1 108.0L36.3 106.7L36.7 105.3L37.3 104.0L38.1 102.6L39.1 101.3L40.3 99.9L41.7 98.6L43.2 97.3L44.8 95.9L46.3 94.6L47.8 93.2L49.1 91.9L50.3 90.5L51.4 89.2L52.4 87.8L53.4 86.5L54.4 85.2L55.4 83.8L56.4 82.5L57.4 81.1L58.4 79.8L59.2 78.4L59.9 77.1L60.6 75.7L61.2 74.4L61.8 73.1L62.3 71.7L62.8 70.4L63.2 69.0L63.6 67.7L63.9 66.3L64.2 65.0L64.5 63.6L64.6 62.3L64.8 61.0L64.9 59.6L65.0 58.3L65.1 56.9L65.3 55.6L65.4 54.2L65.5 52.9L65.6 51.5" fill="none" stroke="#c4d0ee" stroke-opacity=".55" stroke-width="1"/>
+              <path d="M296 167.2L296.5 167.2L296.8 165.8L297.1 164.5L297.6 163.1L298.3 161.8L299.2 160.5L300.6 159.1L302.4 157.8L304.8 156.4L307.6 155.1L310.9 153.7L314.2 152.4L317.1 151.0L319.4 149.7L321.2 148.4L322.7 147.0L323.6 145.7L323.7 144.3L323.0 143.0L321.6 141.6L319.7 140.3L317.3 138.9L314.6 137.6L311.8 136.3L309.0 134.9L306.5 133.6L304.5 132.2L302.9 130.9L301.7 129.5L300.9 128.2L300.6 126.8L300.8 125.5L301.3 124.2L302.0 122.8L303.0 121.5L304.1 120.1L305.6 118.8L307.4 117.4L309.6 116.1L312.1 114.7L314.5 113.4L317.0 112.1L319.5 110.7L322.1 109.4L324.2 108.0L325.5 106.7L326.0 105.3L325.8 104.0L325.3 102.6L324.7 101.3L324.0 99.9L323.2 98.6L322.0 97.3L320.2 95.9L317.7 94.6L314.6 93.2L311.5 91.9L308.8 90.5L306.7 89.2L305.1 87.8L304.2 86.5L304.0 85.2L304.5 83.8L305.7 82.5L307.5 81.1L309.9 79.8L312.7 78.4L315.6 77.1L318.4 75.7L321.0 74.4L323.2 73.1L324.6 71.7L325.3 70.4L325.1 69.0L324.2 67.7L322.4 66.3L319.9 65.0L316.7 63.6L313.1 62.3L309.6 61.0L306.5 59.6L303.8 58.3L301.6 56.9L300.0 55.6L298.8 54.2L297.8 52.9L297.1 51.5L296.7 50.2L296.3 48.9L296 48.9Z" fill="#f2a65a" fill-opacity=".14"/><path d="M296.5 167.2L296.8 165.8L297.1 164.5L297.6 163.1L298.3 161.8L299.2 160.5L300.6 159.1L302.4 157.8L304.8 156.4L307.6 155.1L310.9 153.7L314.2 152.4L317.1 151.0L319.4 149.7L321.2 148.4L322.7 147.0L323.6 145.7L323.7 144.3L323.0 143.0L321.6 141.6L319.7 140.3L317.3 138.9L314.6 137.6L311.8 136.3L309.0 134.9L306.5 133.6L304.5 132.2L302.9 130.9L301.7 129.5L300.9 128.2L300.6 126.8L300.8 125.5L301.3 124.2L302.0 122.8L303.0 121.5L304.1 120.1L305.6 118.8L307.4 117.4L309.6 116.1L312.1 114.7L314.5 113.4L317.0 112.1L319.5 110.7L322.1 109.4L324.2 108.0L325.5 106.7L326.0 105.3L325.8 104.0L325.3 102.6L324.7 101.3L324.0 99.9L323.2 98.6L322.0 97.3L320.2 95.9L317.7 94.6L314.6 93.2L311.5 91.9L308.8 90.5L306.7 89.2L305.1 87.8L304.2 86.5L304.0 85.2L304.5 83.8L305.7 82.5L307.5 81.1L309.9 79.8L312.7 78.4L315.6 77.1L318.4 75.7L321.0 74.4L323.2 73.1L324.6 71.7L325.3 70.4L325.1 69.0L324.2 67.7L322.4 66.3L319.9 65.0L316.7 63.6L313.1 62.3L309.6 61.0L306.5 59.6L303.8 58.3L301.6 56.9L300.0 55.6L298.8 54.2L297.8 52.9L297.1 51.5L296.7 50.2L296.3 48.9" fill="none" stroke="#f2a65a" stroke-opacity=".8" stroke-width="1"/>
+              <path d="M296 160.5L296.5 160.5L296.8 159.1L297.2 157.8L297.8 156.4L298.6 155.1L299.9 153.7L301.6 152.4L303.8 151.0L306.2 149.7L308.4 148.4L310.0 147.0L310.9 145.7L311.3 144.3L311.3 143.0L311.1 141.6L310.5 140.3L309.8 138.9L308.8 137.6L307.8 136.3L306.9 134.9L306.1 133.6L305.7 132.2L305.6 130.9L305.9 129.5L306.6 128.2L307.8 126.8L309.4 125.5L311.2 124.2L313.1 122.8L315.0 121.5L316.5 120.1L317.6 118.8L318.4 117.4L319.0 116.1L319.3 114.7L319.1 113.4L318.7 112.1L318.2 110.7L317.6 109.4L316.8 108.0L315.9 106.7L315.1 105.3L314.6 104.0L314.5 102.6L314.6 101.3L314.8 99.9L314.8 98.6L314.2 97.3L313.3 95.9L312.2 94.6L311.5 93.2L311.5 91.9L312.1 90.5L313.4 89.2L315.3 87.8L317.4 86.5L319.7 85.2L321.8 83.8L323.3 82.5L324.5 81.1L325.3 79.8L325.9 78.4L326.0 77.1L325.3 75.7L323.8 74.4L321.7 73.1L319.3 71.7L316.5 70.4L313.4 69.0L310.5 67.7L308.2 66.3L306.8 65.0L306.2 63.6L306.3 62.3L307.0 61.0L308.1 59.6L309.5 58.3L311.0 56.9L312.5 55.6L313.6 54.2L314.2 52.9L314.1 51.5L313.2 50.2L311.8 48.9L310.0 47.5L307.8 46.2L305.5 44.8L303.2 43.5L301.1 42.1L299.5 40.8L298.3 39.4L297.5 38.1L297.0 36.8L296.6 35.4L296.4 34.1L296 34.1Z" fill="#7fa0ff" fill-opacity=".12"/><path d="M296.5 160.5L296.8 159.1L297.2 157.8L297.8 156.4L298.6 155.1L299.9 153.7L301.6 152.4L303.8 151.0L306.2 149.7L308.4 148.4L310.0 147.0L310.9 145.7L311.3 144.3L311.3 143.0L311.1 141.6L310.5 140.3L309.8 138.9L308.8 137.6L307.8 136.3L306.9 134.9L306.1 133.6L305.7 132.2L305.6 130.9L305.9 129.5L306.6 128.2L307.8 126.8L309.4 125.5L311.2 124.2L313.1 122.8L315.0 121.5L316.5 120.1L317.6 118.8L318.4 117.4L319.0 116.1L319.3 114.7L319.1 113.4L318.7 112.1L318.2 110.7L317.6 109.4L316.8 108.0L315.9 106.7L315.1 105.3L314.6 104.0L314.5 102.6L314.6 101.3L314.8 99.9L314.8 98.6L314.2 97.3L313.3 95.9L312.2 94.6L311.5 93.2L311.5 91.9L312.1 90.5L313.4 89.2L315.3 87.8L317.4 86.5L319.7 85.2L321.8 83.8L323.3 82.5L324.5 81.1L325.3 79.8L325.9 78.4L326.0 77.1L325.3 75.7L323.8 74.4L321.7 73.1L319.3 71.7L316.5 70.4L313.4 69.0L310.5 67.7L308.2 66.3L306.8 65.0L306.2 63.6L306.3 62.3L307.0 61.0L308.1 59.6L309.5 58.3L311.0 56.9L312.5 55.6L313.6 54.2L314.2 52.9L314.1 51.5L313.2 50.2L311.8 48.9L310.0 47.5L307.8 46.2L305.5 44.8L303.2 43.5L301.1 42.1L299.5 40.8L298.3 39.4L297.5 38.1L297.0 36.8L296.6 35.4L296.4 34.1" fill="none" stroke="#7fa0ff" stroke-opacity=".85" stroke-width="1"/>
+              <g stroke="#ff8a9a" stroke-width="1" stroke-dasharray="2.5 3" fill="none"><path d="M123.5 108.3L123.5 103.2"/><path d="M181.0 105.1L181.0 94.9"/><path d="M238.5 101.8L238.5 86.5"/></g>
+              <path d="M66 111.6L296 98.6" stroke="#f2a65a" stroke-width="2" stroke-linecap="round"/>
+              <path d="M66 111.6L296 78.2" stroke="#7fa0ff" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="296" cy="98.6" r="2.8" fill="#f2a65a"/><circle cx="296" cy="78.2" r="2.8" fill="#7fa0ff"/>
+              <g class="rh-moving">
+                <circle r="2.6" fill="#f2a65a"><animate attributeName="cx" values="66;296" dur="3.6s" repeatCount="indefinite"/><animate attributeName="cy" values="111.6;98.6" dur="3.6s" repeatCount="indefinite"/></circle>
+                <circle r="2.6" fill="#7fa0ff"><animate attributeName="cx" values="66;296" dur="3.6s" repeatCount="indefinite"/><animate attributeName="cy" values="111.6;78.2" dur="3.6s" repeatCount="indefinite"/></circle>
+              </g>
+              <circle cx="66" cy="111.6" r="6.5" fill="#ffffff" fill-opacity=".18"/><circle cx="66" cy="111.6" r="3.6" fill="#ffffff"/>
+              <path d="M66 208H296M291 204.5L296 208L291 211.5" stroke="#aab8de" stroke-opacity=".35" fill="none"/>
+              <g font-family="'DM Mono', monospace" font-size="8.5" fill="#8c97b6" text-anchor="middle"><text x="66" y="222">t = 0</text><text x="181" y="222">flow time</text><text x="296" y="222">t = 1</text></g>
+            </svg>
+          </a>
+          <div class="rh-body">
+            <div class="rh-kicker">ICML 2026 · Distributional RL · Flow Matching</div>
+            <h3 class="rh-title"><a href="https://boyangasu.github.io/path-coupled-bellman-flows/">Path-Coupled Bellman Flows</a></h3>
+            <p class="rh-desc">
+              Flow-matching critics can learn full return distributions without fixed atoms or quantiles, but forcing the Bellman equation into a flow either moves its starting point off the Gaussian prior or leaves the current and successor flows uncoupled, which makes training targets noisy.
+              PCBF builds Bellman paths that start at the prior, end at the Bellman target, and share their noise with the successor flow, so the successor's velocity becomes a variance-reducing control variate.
+            </p>
+            <p class="rh-note">The project page includes interactive demos of the path coupling and the bias–variance trade-off.</p>
+            <div class="rh-links">
+              <a class="rh-primary" href="https://boyangasu.github.io/path-coupled-bellman-flows/">project page</a>
+              <a class="pub-link" href="https://arxiv.org/abs/2605.08253">arxiv</a>
+              <a class="pub-link" href="https://github.com/BoyangASU/path-coupled-bellman-flows">code</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
 
     <!-- NEWS -->
     <section id="news">
@@ -436,6 +521,7 @@
                 We introduce path-coupled Bellman flows, a distributional RL method that uses shared-noise coupling between source and target return distributions to reduce variance in flow-matching-based critics.
               </div>
               <div class="pub-links">
+                <a class="pub-link" href="https://boyangasu.github.io/path-coupled-bellman-flows/">project page</a>
                 <a class="pub-link" href="https://icml.cc/virtual/2026/poster/64218">paper</a>
                 <a class="pub-link" href="https://github.com/BoyangASU/path-coupled-bellman-flows">code</a>
                 <a class="pub-link" href="https://arxiv.org/abs/2605.08253">arxiv</a>
